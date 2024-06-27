@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -22,5 +21,14 @@ public class Trip {
         this.provider = provider;
         this.departure = departure;
         this.arrival = arrival;
+    }
+
+    public void cancel() {
+        boolean tripHasOrders = this.listOfOrders.size() > 0;
+
+        this.tripStatus = TripStatus.CANCELED;
+        if (tripHasOrders) {
+            this.listOfOrders = this.listOfOrders.stream().peek(Order::cancelOrder).toList();
+        }
     }
 }

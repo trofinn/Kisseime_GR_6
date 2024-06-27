@@ -15,11 +15,17 @@ public class Order {
     private final Client client;
     private final List<ElementOrder> listOfElements;
     OrderStatus statusOfOrder = OrderStatus.PENDING;
-    OrderStatus statusOfOrderPayment = OrderStatus.PENDING;
+    OrderPaymentStatus statusOfOrderPayment = OrderPaymentStatus.PENDING;
 
     public Order(Trip trip, Client client, List<ElementOrder> listOfElements) {
         this.trip = trip;
         this.client = client;
         this.listOfElements = listOfElements;
     }
+
+    void cancelOrder() {
+        this.statusOfOrder = OrderStatus.CANCELED;
+        this.statusOfOrderPayment = OrderPaymentStatus.REFUNDED;
+    }
+
 }

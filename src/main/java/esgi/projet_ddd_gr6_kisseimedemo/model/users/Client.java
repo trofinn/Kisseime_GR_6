@@ -5,9 +5,11 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 public class Client {
+    private final UUID id = UUID.randomUUID();
     private final String name;
     private List<Order> listOfOrders = new ArrayList<>();
 

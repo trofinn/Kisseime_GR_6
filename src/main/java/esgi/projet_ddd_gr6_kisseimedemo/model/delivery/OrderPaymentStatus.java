@@ -1,6 +1,6 @@
 package esgi.projet_ddd_gr6_kisseimedemo.model.delivery;
 
-enum OrderPaymentStatus {
+public enum OrderPaymentStatus {
     PENDING,
     PAYED,
     REFUNDED

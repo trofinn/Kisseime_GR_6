@@ -5,7 +5,6 @@ import esgi.projet_ddd_gr6_kisseimedemo.model.users.Provider;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public class TripRepository {
     private List<Trip> listOfTrips = List.of(
