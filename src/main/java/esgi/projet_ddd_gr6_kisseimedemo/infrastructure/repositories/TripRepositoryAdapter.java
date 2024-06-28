@@ -9,23 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class TripRepositoryAdapter implements TripRepository {
-    private List<Trip> listOfTrips = List.of(
-            new Trip(
-                    new Provider("Kisseime"),
-                    new TripInfos("Paris", "Marseille")
-            )
-    );
 
     public Optional<Trip> findtripById(String tripId) {
-        return listOfTrips.stream().filter(trip -> trip.getId().equals(tripId)).findFirst();
+        return null;
     }
 
     public void updateTrip(Trip updatedTrip) {
-        listOfTrips.stream().map(trip -> {
-            if (trip.getId() == updatedTrip.getId()) {
-                return updatedTrip;
-            }
-            return trip;
-        });
     }
 }

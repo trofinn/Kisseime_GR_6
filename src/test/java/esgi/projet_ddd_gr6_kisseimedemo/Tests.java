@@ -96,7 +96,7 @@ public class Tests {
 
         // WHEN
         Mockito.when(payment.pay(facture.getFrom(), facture.getTo())).thenReturn(true);
-        cancelTripUseCase.getUpdatedAndRefundedFactures(List.of(facture));
+        cancelTripUseCase.updateAndRefundFactures(List.of(facture));
 
         // THEN
         Assertions.assertEquals(facture.getFactureStatus().name(), "REFUNDED");
@@ -122,7 +122,7 @@ public class Tests {
 
         // THEN
         Assertions.assertEquals(facture.getFactureStatus().name(), "PAYED");
-        Assertions.assertThrows(RuntimeException.class, () -> cancelTripUseCase.getUpdatedAndRefundedFactures(List.of(facture)));
+        Assertions.assertThrows(RuntimeException.class, () -> cancelTripUseCase.updateAndRefundFactures(List.of(facture)));
 
     }
 

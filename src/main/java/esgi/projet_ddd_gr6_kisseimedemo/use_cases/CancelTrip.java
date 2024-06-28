@@ -31,8 +31,8 @@ public class CancelTrip {
         var facturesToBeRefunded = getPayedFactures(allFactures);
         var facturesNotPayed = getNotPayedFactures(allFactures);
 
-        getUpdatedAndRefundedFactures(facturesToBeRefunded);
-        getOnlyUpdatedFactureStatus(facturesNotPayed);
+        updateAndRefundFactures(facturesToBeRefunded);
+        onlyUpdateFactureStatus(facturesNotPayed);
 
     }
 
@@ -65,7 +65,7 @@ public class CancelTrip {
         return allFactures.stream().filter(facture -> !facture.wasPayed()).toList();
     }
 
-    public List<Facture> getUpdatedAndRefundedFactures(List<Facture> payedFactures) {
+    public List<Facture> updateAndRefundFactures(List<Facture> payedFactures) {
         return payedFactures.stream().map(facture -> {
             var resultRefund = refundOrder(facture);
             if (resultRefund) {
@@ -79,7 +79,7 @@ public class CancelTrip {
     }
 
 
-    public List<Facture> getOnlyUpdatedFactureStatus(List<Facture> notPayedFactures) {
+    public List<Facture> onlyUpdateFactureStatus(List<Facture> notPayedFactures) {
         return notPayedFactures.stream().peek(facture -> facture.setFactureStatus(FactureStatus.REFUNDED)).toList();
     }
 
