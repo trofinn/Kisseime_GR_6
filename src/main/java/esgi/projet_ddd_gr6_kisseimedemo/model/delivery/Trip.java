@@ -12,15 +12,13 @@ import java.util.List;
 public class Trip {
     private final String id = "123";
     private final Provider provider;
-    private final String departure;
-    private final String arrival;
+    private final TripInfos tripInfos;
     private TripStatus tripStatus = TripStatus.LOADING;
     private List<Order> listOfOrders = new ArrayList<>();
 
-    public Trip(Provider provider, String departure, String arrival) {
+    public Trip(Provider provider, TripInfos tripInfos) {
         this.provider = provider;
-        this.departure = departure;
-        this.arrival = arrival;
+        this.tripInfos = tripInfos;
     }
 
     public void cancel() {
@@ -30,5 +28,9 @@ public class Trip {
         if (tripHasOrders) {
             this.listOfOrders = this.listOfOrders.stream().peek(Order::cancelOrder).toList();
         }
+    }
+
+    public void addOrder(Order order) {
+        this.listOfOrders.add(order);
     }
 }
